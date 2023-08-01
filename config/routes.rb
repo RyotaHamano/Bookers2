@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   get '/home/about' => 'homes#about', as:"about"
   devise_for :users
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy]
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do 
+    member do 
+      get :follows, :followers
+    end
+    resource :relationships, only: [:create, :destroy]
+  end
   devise_scope :user do
     post "users/guest_sign_in", to:"users/sessions#guest_sign_in"
   end

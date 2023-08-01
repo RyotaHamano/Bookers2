@@ -11,6 +11,14 @@
             <th>introduction</th>
             <th><%= current_user.introduction %></th>
           </tr>
+          <tr>
+            <th>follows</th>
+            <th><%= link_to follows_user_path(current_user.id) do %><%= current_user.followers.count %><% end %></th>
+          </tr>
+          <tr>
+            <th>followers</th>
+            <th><%= link_to followers_user_path(current_user.id) do%><%= current_user.followeds.count %><% end %></th>
+          </tr>
         </tbody>
       </table>
       <% unless user.guest_user? %>
