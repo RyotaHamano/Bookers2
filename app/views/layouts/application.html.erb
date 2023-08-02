@@ -35,7 +35,7 @@
           </div>
         </div>
       </nav>
-      <% if User.exists?(id: current_user.id) %>
+      <% if user_signed_in? %>
       <div class="container px-5 px-sm-0 search-form">
         <%= form_with url: search_path, local: true, method: :get do |f| %>
           <%= f.text_field :word %>
