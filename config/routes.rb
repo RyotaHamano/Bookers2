@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/home/about' => 'homes#about', as:"about"
   get '/search' => 'searches#search', as:"search"
   devise_for :users
-  resources :books, only: [:index, :show, :edit, :create, :update, :destroy]
+  resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
+  end
   resources :users, only: [:index, :show, :edit, :update] do 
     member do 
       get :follows, :followers
