@@ -1,0 +1,3 @@
+$('#comment').html('<%= j(render 'book_comments/comments' ) %>');
+$('#form').html('<%= j(render 'book_comments/form', comment: BookComment.new )%>');
+$('text_area').val('');
